@@ -8,6 +8,10 @@ if (-not $usuario) {
     exit 1
 }
 
+Write-Host "===================" -ForegroundColor Cyan
+Write-Host "|| CONVERSOR.3000 ||" -ForegroundColor Cyan
+Write-Host "===================" -ForegroundColor Cyan
+Write-Host "" -ForegroundColor Cyan
 Write-Host "Usuario a elevar: $usuario" -ForegroundColor Cyan
 
 # === Verificar si ya es administrador ===
