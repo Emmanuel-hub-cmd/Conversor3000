@@ -7,8 +7,8 @@ if (-not (Test-Path -Path $folderPath)) {
 }
 
 # URLs raw correctas de los archivos a descargar
-$urlBat = "https://raw.githubusercontent.com/Emmanuel-hub-cmd/my-script/main/elevar_usuario.bat"
-$urlPs1 = "https://raw.githubusercontent.com/Emmanuel-hub-cmd/my-script/main/elevar_usuario.ps1"
+$urlBat = "https://raw.githubusercontent.com/Emmanuel-hub-cmd/Conversor3000/main/elevar_usuario.bat"
+$urlPs1 = "https://raw.githubusercontent.com/Emmanuel-hub-cmd/Conversor3000/main/elevar_usuario.ps1"
 
 # Rutas completas donde se guardarán los archivos
 $destinoBat = Join-Path $folderPath "elevar_usuario.bat"
