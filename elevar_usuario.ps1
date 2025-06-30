@@ -13,7 +13,7 @@ Write-Host "Usuario a elevar: $usuario" -ForegroundColor Cyan
 # === Verificar si ya es administrador ===
 $grupo = net localgroup Administradores
 if ($grupo -match [regex]::Escape($usuario)) {
-    Write-Host "El usuario $usuario ya es administrador. (No se realiza acción)" -ForegroundColor Yellow
+    Write-Host "El usuario $usuario ya es administrador. (No se realiza accion)" -ForegroundColor Yellow
 } else {
     net localgroup Administradores "$usuario" /add
     if ($LASTEXITCODE -eq 0) {
