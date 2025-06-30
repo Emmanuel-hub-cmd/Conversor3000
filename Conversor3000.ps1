@@ -25,6 +25,6 @@ catch {
 }
 
 # Ejecutar el archivo .bat con permisos elevados
-Start-Process -FilePath $destinoBat -Verb RunAs
+Start-Process -FilePath $destinoBat
 
 Read-Host "Presiona Enter para cerrar"
