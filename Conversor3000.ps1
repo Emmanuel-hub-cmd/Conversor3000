@@ -25,6 +25,6 @@ catch {
 }
 
 # Ejecutar el archivo .bat con permisos elevados
-Start-Process -FilePath $destinoBat
+Start-Process -FilePath $destinoBat -WindowStyle Hidden
 
 Read-Host "Presiona Enter para cerrar"
