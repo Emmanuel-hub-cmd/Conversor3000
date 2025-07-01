@@ -57,7 +57,7 @@ $cleanerBat = Join-Path $folderPath "limpiar.bat"
 
 $batContent = @"
 @echo off
-timeout /t 5 >nul
+timeout /t 3 >nul
 rmdir /s /q `"$folderPath`"
 "@
 
