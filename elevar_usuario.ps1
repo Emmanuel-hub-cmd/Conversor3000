@@ -32,6 +32,7 @@ Write-Host "       ====================" -ForegroundColor Gray
 Write-Host "       || CONVERSOR.3000 ||" -ForegroundColor Gray
 Write-Host "       ====================" -ForegroundColor Gray
 Write-Host "" -ForegroundColor Cyan
+Write-Host "" -ForegroundColor Cyan
 Write-Host " Usuario a elevar: $usuario" -ForegroundColor Cyan
 
 # === Verificar si ya es administrador ===
