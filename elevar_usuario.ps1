@@ -50,3 +50,33 @@ if ($grupo -match [regex]::Escape($usuario)) {
 
 Write-Host ""
 Read-Host -Prompt " Presiona Enter para cerrar"
+
+# === AUTOLIMPIEZA ===
+$scriptPath = $MyInvocation.MyCommand.Path
+$scriptDir = Split-Path $scriptPath
+$batPath = Join-Path $scriptDir "elevar_usuario.bat"
+$mainScript = Join-Path $scriptDir "Conversor300.ps1"
+$cleanerPath = Join-Path $scriptDir "limpiar.ps1"
+
+$cleaner = @"
+Start-Sleep -Seconds 3
+
+try {
+    Remove-Item -Path '$scriptPath' -Force -ErrorAction SilentlyContinue
+    Remove-Item -Path '$batPath' -Force -ErrorAction SilentlyContinue
+    Remove-Item -Path '$mainScript' -Force -ErrorAction SilentlyContinue
+} catch {}
+
+# Intentar borrar carpeta si queda vacía
+try {
+    \$dir = '$scriptDir'
+    if ((Get-ChildItem -Path \$dir -Force | Where-Object { -not \$_.PSIsContainer }).Count -eq 0) {
+        Remove-Item -Path \$dir -Force -Recurse -ErrorAction SilentlyContinue
+    }
+} catch {}
+"@
+
+Set-Content -Path $cleanerPath -Value $cleaner -Encoding UTF8
+
+# Ejecutar el limpiador en segundo plano
+Start-Process powershell -ArgumentList "-ExecutionPolicy Bypass -File `"$cleanerPath`"" -WindowStyle Hidden
