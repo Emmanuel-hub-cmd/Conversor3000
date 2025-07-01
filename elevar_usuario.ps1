@@ -9,7 +9,6 @@ if (-not $usuario) {
 }
 
 Write-Host "" -ForegroundColor Gray
-Write-Host "" -ForegroundColor Gray
 Write-Host "               ====               " -ForegroundColor Gray
 Write-Host "           ============           " -ForegroundColor Gray
 Write-Host "       ====================       " -ForegroundColor Gray
@@ -28,7 +27,6 @@ Write-Host "      ========      ========      " -ForegroundColor Gray
 Write-Host "        ======      ======        " -ForegroundColor Gray
 Write-Host "         +===        ====         " -ForegroundColor Gray
 Write-Host "            =        =            " -ForegroundColor Gray
-Write-Host "" -ForegroundColor Gray
 Write-Host "" -ForegroundColor Gray
 Write-Host "       ====================" -ForegroundColor Gray
 Write-Host "       || CONVERSOR.3000 ||" -ForegroundColor Gray
