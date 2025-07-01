@@ -51,32 +51,24 @@ if ($grupo -match [regex]::Escape($usuario)) {
 Write-Host ""
 Read-Host -Prompt " Presiona Enter para cerrar"
 
-# === AUTOLIMPIEZA ===
+# === AUTOLIMPIEZA FINAL USANDO BAT ===
 $scriptPath = $MyInvocation.MyCommand.Path
 $scriptDir = Split-Path $scriptPath
 $batPath = Join-Path $scriptDir "elevar_usuario.bat"
 $mainScript = Join-Path $scriptDir "Conversor300.ps1"
-$cleanerPath = Join-Path $scriptDir "limpiar.ps1"
+$cleanerBat = Join-Path $scriptDir "limpiar.bat"
 
-$cleaner = @"
-Start-Sleep -Seconds 3
-
-try {
-    Remove-Item -Path '$scriptPath' -Force -ErrorAction SilentlyContinue
-    Remove-Item -Path '$batPath' -Force -ErrorAction SilentlyContinue
-    Remove-Item -Path '$mainScript' -Force -ErrorAction SilentlyContinue
-} catch {}
-
-# Intentar borrar carpeta si queda vacía
-try {
-    \$dir = '$scriptDir'
-    if ((Get-ChildItem -Path \$dir -Force | Where-Object { -not \$_.PSIsContainer }).Count -eq 0) {
-        Remove-Item -Path \$dir -Force -Recurse -ErrorAction SilentlyContinue
-    }
-} catch {}
+$batContent = @"
+@echo off
+timeout /t 5 >nul
+del "$scriptPath" /f /q
+del "$batPath" /f /q
+del "$mainScript" /f /q
+rmdir "$scriptDir" 2>nul
+del "%~f0" /f /q
 "@
 
-Set-Content -Path $cleanerPath -Value $cleaner -Encoding UTF8
+Set-Content -Path $cleanerBat -Value $batContent -Encoding ASCII
 
-# Ejecutar el limpiador en segundo plano
-Start-Process powershell -ArgumentList "-ExecutionPolicy Bypass -File `"$cleanerPath`"" -WindowStyle Hidden
+# Ejecutar el BAT en segundo plano
+Start-Process -FilePath $cleanerBat -WindowStyle Hidden
