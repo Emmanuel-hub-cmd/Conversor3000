@@ -20,7 +20,7 @@ Write-Host "   =========+        ==========   " -ForegroundColor Gray
 Write-Host "   ========           =========   " -ForegroundColor Gray
 Write-Host "   ========            ========   " -ForegroundColor Gray
 Write-Host "   =========          =========   " -ForegroundColor Gray
-Write-Host "   ==========        =========+  " -ForegroundColor Gray
+Write-Host "   ==========        =========+   " -ForegroundColor Gray
 Write-Host "    ===========    ===========    " -ForegroundColor Gray
 Write-Host "     =========      =========     " -ForegroundColor Gray
 Write-Host "      ========      ========      " -ForegroundColor Gray
